@@ -1,8 +1,8 @@
 {
-  "name": "vscode-yandex-tracker",
+  "name": "yandex-tracker-helper",
   "displayName": "Yandex Tracker Helper",
   "description": "VS Code extension for tracking work time on Yandex Tracker tasks with automatic time logging and Git branch integration",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "publisher": "MalyugaSensei",
   "author": {
     "name": "MalyugaSensei"
@@ -183,7 +183,7 @@
     "@types/mocha": "^10.0.10",
     "@types/node": "22.x",
     "@types/node-fetch": "^2.6.13",
-    "@types/vscode": "^1.107.0",
+    "@types/vscode": "^1.105.1",
     "@vscode/test-cli": "^0.0.12",
     "@vscode/test-electron": "^2.5.2",
     "eslint": "^9.39.1",
