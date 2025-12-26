@@ -16,6 +16,11 @@
   "bugs": {
     "url": "https://github.com/MalyugaSensei/vscode-yandex-tracker/issues"
   },
+  "icon": "resources/icon.png",
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+  },
   "keywords": [
     "yandex",
     "tracker",
