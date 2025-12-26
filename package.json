@@ -2,7 +2,7 @@
   "name": "yandex-tracker-helper",
   "displayName": "Yandex Tracker Helper",
   "description": "VS Code extension for tracking work time on Yandex Tracker tasks with automatic time logging and Git branch integration",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "MalyugaSensei",
   "author": {
     "name": "MalyugaSensei"
