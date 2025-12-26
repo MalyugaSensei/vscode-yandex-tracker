@@ -1,0 +1,193 @@
+{
+  "name": "vscode-yandex-tracker",
+  "displayName": "Yandex Tracker Helper",
+  "description": "VS Code extension for tracking work time on Yandex Tracker tasks with automatic time logging and Git branch integration",
+  "version": "0.1.0",
+  "publisher": "MalyugaSensei",
+  "author": {
+    "name": "MalyugaSensei"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MalyugaSensei/vscode-yandex-tracker.git"
+  },
+  "homepage": "https://github.com/MalyugaSensei/vscode-yandex-tracker",
+  "bugs": {
+    "url": "https://github.com/MalyugaSensei/vscode-yandex-tracker/issues"
+  },
+  "keywords": [
+    "yandex",
+    "tracker",
+    "time-tracking",
+    "worklog",
+    "yandex tracker",
+    "timer",
+    "productivity"
+  ],
+  "engines": {
+    "vscode": "^1.105.1"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "tracker-helper",
+          "title": "Tracker Helper",
+          "icon": "$(clock)"
+        }
+      ]
+    },
+    "views": {
+      "tracker-helper": [
+        {
+          "id": "tracker-helper.tasks",
+          "name": "Tasks"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "tracker-helper.startTracker",
+        "title": "Tracker: Start timer",
+        "icon": "$(play)"
+      },
+      {
+        "command": "tracker-helper.stopTracker",
+        "title": "Tracker: Stop timer",
+        "icon": "$(debug-pause)"
+      },
+      {
+        "command": "tracker-helper.setOAuthToken",
+        "title": "Tracker: Set OAuth2.0 Token"
+      },
+      {
+        "command": "tracker-helper.fetch",
+        "title": "Tracker: Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "tracker-helper.assignTaskWithBranch",
+        "title": "Tracker: Assign Task with Branch",
+        "icon": "$(git-branch)"
+      },
+      {
+        "command": "tracker-helper.sendTimeTask",
+        "title": "Tracker: Send Time",
+        "icon": "$(cloud-upload)"
+      },
+      {
+        "command": "tracker-helper.sendTimeAll",
+        "title": "Tracker: Send All Time",
+        "icon": "$(cloud-upload)"
+      },
+      {
+        "command": "tracker-helper.clearAllData",
+        "title": "Tracker: Clear All Data",
+        "icon": "$(trash)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "tracker-helper.fetch",
+          "when": "view === tracker-helper.tasks && tracker-helper.hasCredentials",
+          "group": "navigation"
+        },
+        {
+          "command": "tracker-helper.sendTimeAll",
+          "when": "view === tracker-helper.tasks && tracker-helper.hasCredentials",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "tracker-helper.startTracker",
+          "when": "view === tracker-helper.tasks && viewItem == 'timerInactive'",
+          "group": "inline@1"
+        },
+        {
+          "command": "tracker-helper.stopTracker",
+          "when": "view === tracker-helper.tasks && viewItem == 'timerActive'",
+          "group": "inline@2"
+        },
+        {
+          "command": "tracker-helper.assignTaskWithBranch",
+          "when": "view === tracker-helper.tasks",
+          "group": "inline@3"
+        },
+        {
+          "command": "tracker-helper.sendTimeTask",
+          "when": "view === tracker-helper.tasks",
+          "group": "inline@4"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "tracker-helper.assignTaskWithBranch",
+          "when": "false"
+        },
+        {
+          "command": "tracker-helper.sendTimeTask",
+          "when": "false"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "tracker-helper.tasks",
+        "contents": "Welcome to Tracker Helper!\n\nTo get started, you need to set up OAuth token and Organization ID.\n\n[Set OAuth Token](command:tracker-helper.setOAuthToken)\n\n[Open Settings](command:workbench.action.openSettings?%5B%22trackerHelper.orgId%22%5D)\n\nAfter setting up credentials, use **Tracker: Refresh** command to load tasks.",
+        "when": "!tracker-helper.hasCredentials"
+      }
+    ],
+    "configuration": {
+      "title": "Tracker Helper",
+      "properties": {
+        "trackerHelper.orgId": {
+          "type": "string",
+          "default": "",
+          "description": "Organization ID for Yandex Tracker",
+          "scope": "resource"
+        },
+        "trackerHelper.orgIdHeader": {
+          "type": "string",
+          "default": "X-Cloud-Org-ID",
+          "description": "orgId Header for Yandex Tracker",
+          "enum": [
+            "X-Cloud-Org-ID",
+            "X-Org-ID"
+          ]
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "rspack build --mode production",
+    "compile:dev": "rspack build --mode development",
+    "watch": "rspack build --mode development --watch",
+    "pretest": "yarn run compile && yarn run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@rspack/cli": "^1.6.8",
+    "@rspack/core": "^1.6.8",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/node-fetch": "^2.6.13",
+    "@types/vscode": "^1.107.0",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.39.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.48.1"
+  }
+}

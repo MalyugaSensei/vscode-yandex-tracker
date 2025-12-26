@@ -1,0 +1,82 @@
+// See https://go.microsoft.com/fwlink/?LinkId=733558
+// for the documentation about the tasks.json format
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "watch",
+			"problemMatcher": {
+				"owner": "rspack",
+				"fileLocation": ["relative", "${workspaceFolder}"],
+				"pattern": [
+					{
+						"regexp": "^ERROR in (.+)$",
+						"file": 1
+					},
+					{
+						"regexp": "^.*│\\s+│\\s+,-\\[(.+):(\\d+):(\\d+)\\]$",
+						"file": 1,
+						"line": 2,
+						"column": 3
+					},
+					{
+						"regexp": "^.*├─▶\\s+×\\s+(.+)$",
+						"message": 1
+					},
+					{
+						"regexp": "^.*╰─▶\\s+×\\s+(.+)$",
+						"message": 1
+					}
+				],
+				"background": {
+					"activeOnStart": true,
+					"beginsPattern": "^.*\\$ rspack build.*",
+					"endsPattern": "^Rspack compiled.*"
+				}
+			},
+			"isBackground": true,
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"label": "rspack: watch",
+			"presentation": {
+				"reveal": "never",
+				"group": "watch"
+			}
+		},
+		{
+			"type": "npm",
+			"script": "compile:dev",
+			"problemMatcher": {
+				"owner": "rspack",
+				"fileLocation": ["relative", "${workspaceFolder}"],
+				"pattern": [
+					{
+						"regexp": "^ERROR in (.+)$",
+						"file": 1
+					},
+					{
+						"regexp": "^.*│\\s+│\\s+,-\\[(.+):(\\d+):(\\d+)\\]$",
+						"file": 1,
+						"line": 2,
+						"column": 3
+					},
+					{
+						"regexp": "^.*├─▶\\s+×\\s+(.+)$",
+						"message": 1
+					},
+					{
+						"regexp": "^.*╰─▶\\s+×\\s+(.+)$",
+						"message": 1
+					}
+				]
+			},
+			"label": "rspack: compile dev",
+			"presentation": {
+				"reveal": "silent"
+			}
+		}
+	]
+}
