@@ -1,62 +1,62 @@
 # Yandex Tracker Helper Extension
 
-VS Code extension for tracking work time on Yandex Tracker tasks and automatically sending time logs to the tracker.
+Расширение VS Code для учёта рабочего времени по задачам Яндекс.Трекера с автоматической отправкой затраченного времени.
 
-## Features
+## Возможности
 
-- ⏱️ Task timer with automatic state persistence
-- 📋 View assigned tasks from Yandex Tracker
-- 📤 Send accumulated time to Yandex Tracker
-- 🌿 Link tasks with Git branches
-- 💾 Timer state survives VS Code restarts
+- ⏱️ Таймер задач с автоматическим сохранением состояния
+- 📋 Просмотр назначенных задач из Яндекс.Трекера
+- 📤 Отправка накопленного времени в Яндекс.Трекер
+- 🌿 Привязка задач к Git-веткам
+- 💾 Состояние таймера сохраняется при перезапуске VS Code
 
-## Installation
+## Установка
 
-Install from VS Code Marketplace or build from source:
+Установите из VS Code Marketplace или соберите из исходников:
 
 ```bash
-# Install from .vsix file
+# Установка из .vsix файла
 code --install-extension vscode-yandex-tracker-1.0.0.vsix
 ```
 
 ## Quick Start
 
-1. **Get OAuth token from Yandex Tracker:**
-   - Go to [Yandex Tracker OAuth Apps](https://oauth.yandex.ru/)
-   - Create a new OAuth application
-   - Copy the OAuth token
+1. **Получите OAuth-токен Яндекс.Трекера:**
+   - Перейдите на [Yandex OAuth](https://oauth.yandex.ru/)
+   - Создайте новое OAuth-приложение
+   - Скопируйте OAuth-токен
 
-2. **Get Organization ID:**
-   - Open your Yandex Tracker organization settings
-   - Find your Organization ID
+2. **Получите ID организации:**
+   - Откройте настройки вашей организации в Яндекс.Трекере
+   - Найдите ID организации
 
-3. **Configure the extension:**
-   - Run command `Tracker: Set OAuth2.0 Token` (Ctrl+Shift+P)
-   - Enter your OAuth token
-   - Set `trackerHelper.orgId` in VS Code settings (File → Preferences → Settings)
+3. **Настройте расширение:**
+   - Выполните команду `Tracker: Set OAuth2.0 Token` (Ctrl+Shift+P)
+   - Введите ваш OAuth-токен
+   - Установите `trackerHelper.orgId` в настройках VS Code (Файл → Параметры → Настройки)
 
-4. **Start using:**
-   - Open Tracker Helper panel from the Activity Bar (clock icon)
-   - Click refresh button (🔄) to fetch tasks
-   - Click Play (▶️) on a task to start tracking
+4. **Начните работу:**
+   - Откройте панель Tracker Helper из Activity Bar (иконка с часами)
+   - Нажмите кнопку обновления (🔄) для загрузки задач
+   - Нажмите Play (▶️) на задаче для начала отслеживания времени
 
-## Commands
+## Команды
 
-- `Tracker: Set OAuth2.0 Token` - Set OAuth token for Yandex Tracker API
-- `Tracker: Start timer` - Start tracking time for selected task
-- `Tracker: Stop timer` - Stop current timer
-- `Tracker: Refresh` - Fetch tasks from Yandex Tracker
-- `Tracker: Assign Task with Branch` - Link current Git branch with a task
-- `Tracker: Send Time` - Send accumulated time for selected task
-- `Tracker: Send All Time` - Send time for all tasks
-- `Tracker: Clear All Data` - Clear all stored timer data
+- `Tracker: Set OAuth2.0 Token` — установить OAuth-токен для API Яндекс.Трекера
+- `Tracker: Start timer` — начать отслеживание времени для выбранной задачи
+- `Tracker: Stop timer` — остановить текущий таймер
+- `Tracker: Refresh` — загрузить задачи из Яндекс.Трекера
+- `Tracker: Assign Task with Branch` — привязать текущую Git-ветку к задаче
+- `Tracker: Send Time` — отправить накопленное время для выбранной задачи
+- `Tracker: Send All Time` — отправить время по всем задачам
+- `Tracker: Clear All Data` — очистить все сохранённые данные таймера
 
-## Configuration
+## Настройки
 
-- `trackerHelper.orgId` - Organization ID for Yandex Tracker (required)
-- `trackerHelper.orgIdHeader` - Organization ID header (`X-Cloud-Org-ID` or `X-Org-ID`, default: `X-Cloud-Org-ID`)
+- `trackerHelper.orgId` — ID организации в Яндекс.Трекере (обязательно)
+- `trackerHelper.orgIdHeader` — заголовок ID организации (`X-Cloud-Org-ID` или `X-Org-ID`, по умолчанию: `X-Cloud-Org-ID`)
 
-You can configure these settings in VS Code Settings (File → Preferences → Settings) or in `.vscode/settings.json`:
+Эти параметры можно настроить в настройках VS Code (Файл → Параметры → Настройки) или в `.vscode/settings.json`:
 
 ```json
 {
@@ -65,54 +65,49 @@ You can configure these settings in VS Code Settings (File → Preferences → S
 }
 ```
 
-## Requirements
+## Требования
 
 - VS Code 1.105.1+
-- Yandex Tracker OAuth token
-- Organization ID
+- OAuth-токен Яндекс.Трекера
+- ID организации
 
-## Development
+## Разработка
 
-### Prerequisites
+### Требования
 
 - Node.js 22.x
-- Yarn package manager
+- Yarn
 - VS Code 1.105.1+
 
-### Building
+### Сборка
 
-The extension uses [Rspack](https://rspack.rs/) bundling:
+Расширение использует [Rspack](https://rspack.rs/) для сборки:
 
 ```bash
-# Install dependencies
+# Установка зависимостей
 yarn install
 
-# Production build
+# Продакшн-сборка
 yarn compile
 
-# Development build
+# Сборка для разработки
 yarn compile:dev
 
-# Watch mode (for development)
+# Режим наблюдения (для разработки)
 yarn watch
 ```
 
-The extension is bundled into a single `extension.js` file for faster loading and smaller size.
-
 ### Debugging
-
-1. Open the project in VS Code
-2. Press F5 to launch Extension Development Host
-3. In the new window, open the Tracker Helper panel to test the extension
+1. Откройте проект в VS Code
+2. Нажмите F5 для запуска Extension Development Host
+3. В новом окне откройте панель Tracker Helper для тестирования расширения
 
 ## License
-
 MIT License - see [LICENSE](LICENSE) for details.
 
 ## Changelog
+См. [CHANGELOG.md](CHANGELOG.md) для информации об изменениях в каждой версии.
 
-See [CHANGELOG.md](CHANGELOG.md) for details about changes in each version.
+## Поддержка
 
-## Support
-
-Found a bug or have a suggestion? Create an [Issue](https://github.com/MalyugaSensei/vscode-yandex-tracker/issues).
+Нашли ошибку или есть предложение? Создайте [Issue](https://github.com/MalyugaSensei/vscode-yandex-tracker/issues).
