@@ -183,8 +183,8 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@rspack/cli": "^1.6.8",
-    "@rspack/core": "^1.6.8",
+    "@rspack/cli": "^1.7.4",
+    "@rspack/core": "^1.7.4",
     "@types/mocha": "^10.0.10",
     "@types/node": "22.x",
     "@types/node-fetch": "^2.6.13",
@@ -193,6 +193,6 @@
     "@vscode/test-electron": "^2.5.2",
     "eslint": "^9.39.1",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.48.1"
+    "typescript-eslint": "^8.54.0"
   }
 }
